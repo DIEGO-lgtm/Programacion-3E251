@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 using namespace ftxui;
+#include <thread>
 
 int main(int argc, char const *argv[])
 {
@@ -13,13 +14,25 @@ int main(int argc, char const *argv[])
 
   );
 
+int fotograma = 0;
+string resetPosition;
+
+ while(true) 
+ {
   auto documento = vbox(
-    spinner(21,1)
+    spinner(21,fotograma)
   );
 
   Render(pantalla, documento);
+  cout << resetPosition;
   pantalla.Print();
+  resetPosition = pantalla.ResetPosition();
+  fotograma++;
 
+  std::this_thread::sleep_for(0.04s);
+  
+}
+   
 
 }
 
