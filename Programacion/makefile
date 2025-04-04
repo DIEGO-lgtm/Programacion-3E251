@@ -1,16 +1,24 @@
-PROYECTO = primo
-LIB := -lftxui-component -lftxui-dom -lftxui-screen 
-CXX := -std=c++17
+PROYECTO := primo
 SRC := src
 INCLUDE := include
 BIN := bin
 EXE := $(BIN)/$(PROYECTO)
+LIB := -lftxui-component -lftxui-dom -lftxui-screen
+CXXFLAGS := -std=c++17 -I$(INCLUDE)
 
-$(EXE) : $(SRC)/main.cpp
-	c++ $< -o $@ $(LIB) $(CXX) -I$(INCLUDE)
+SRC_FILES := $(SRC)/memoria.cpp
 
-run: $(EXE)
-	./$<
+# Compilar
+build: $(EXE)
 
-clean :
-	rm $(BIN)/*
+$(EXE): $(SRC_FILES)
+	mkdir -p $(BIN)
+	c++ $(SRC_FILES) -o $(EXE) $(LIB) $(CXXFLAGS)
+
+# Ejecutar
+run: build
+	./$(EXE)
+
+# Limpiar
+clean:
+	rm -f $(BIN)/*
