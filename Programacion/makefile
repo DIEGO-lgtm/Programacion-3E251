@@ -1,24 +1,15 @@
-PROYECTO := primo
-SRC := src
-INCLUDE := include
-BIN := bin
-EXE := $(BIN)/$(PROYECTO)
-LIB := -lftxui-component -lftxui-dom -lftxui-screen
-CXXFLAGS := -std=c++17 -I$(INCLUDE)
+# Makefile
 
-SRC_FILES := $(SRC)/memoria.cpp
+BIN_DIR = bin
+SRC = src/archivo.cpp
+OUT = $(BIN_DIR)/mi_programa
 
-# Compilar
-build: $(EXE)
+run: $(OUT)
+	./$(OUT)
 
-$(EXE): $(SRC_FILES)
-	mkdir -p $(BIN)
-	c++ $(SRC_FILES) -o $(EXE) $(LIB) $(CXXFLAGS)
+$(OUT): $(SRC)
+	mkdir -p $(BIN_DIR)
+	c++ $(SRC) -o $(OUT) -lftxui-component -lftxui-dom -lftxui-screen -std=c++17 -Iinclude
 
-# Ejecutar
-run: build
-	./$(EXE)
-
-# Limpiar
 clean:
-	rm -f $(BIN)/*
+	rm -rf $(BIN_DIR)
