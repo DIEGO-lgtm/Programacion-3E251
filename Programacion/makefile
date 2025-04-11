@@ -1,7 +1,7 @@
 # Makefile
 
 BIN_DIR = bin
-SRC = src/archivo.cpp
+SRC = src/binario.cpp
 OUT = $(BIN_DIR)/mi_programa
 
 run: $(OUT)
