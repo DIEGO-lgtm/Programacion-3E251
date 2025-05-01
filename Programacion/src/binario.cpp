@@ -11,7 +11,7 @@ struct Persona
 
 int main(int argc, char const*argv[])
 {
-  //Abrir el archivo para escrotura
+  
   ofstream archivo("binaario.bin", ios::binary);
     if(!archivo.is_open())
     {
